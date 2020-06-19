@@ -1,18 +1,18 @@
 import React, { useReducer, useState } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Event from './Event'
 import reducer from '../reducers/index'
 
 const App = () => {
-  const [state, dispathch] = useReducer(reducer, []);
+  const [state, dispatch] = useReducer(reducer, []);
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
   const addEvent = (e) => {
     e.preventDefault();
-    dispathch({
-      type:'CREATE_EVENT',
+    dispatch({
+      type: 'CREATE_EVENT',
       title,
       body
     });
@@ -51,8 +51,9 @@ const App = () => {
             <th></th>
           </tr>
         </thead>
-        <tbody></tbody>
-
+        <tbody>
+          { state.map((event,idnex) => (<Event key={idnex} event={event} dispatch={dispatch} />))}
+        </tbody>
       </table>
     </div>
   );
