@@ -10,13 +10,16 @@ const OperationLogs = () => {
       <h4>操作ログ一覧</h4>
       <table className="table table-hover">
         <thead>
-          <th>内容</th>
-          <th>日時</th>
+          <tr>
+            <th>内容</th>
+            <th>日時</th>
+          </tr>
         </thead>
         <tbody>
           {
-              state.operationLogs.map((operationLog, index) => {
-                return <OperationLog key={index} operationLog={operationLog} />})
+            state.operationLogs.map((operationLog, index) => {
+              return <OperationLog key={index} operationLog={operationLog} />
+            })
           }
         </tbody>
       </table>
